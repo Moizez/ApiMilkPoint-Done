@@ -20,8 +20,8 @@ public class LoginResource {
 	@Autowired
 	LoginService service;
 	
-	@GetMapping("/login")
-	public ResponseEntity<Object> login(String email, String senha) {
+	@PostMapping("/login")
+	public ResponseEntity<Object> login(@RequestBody @Valid String email, String senha) {
 		if(email != null && senha != null) {
 			Object obj = service.login(email, senha);
 			
