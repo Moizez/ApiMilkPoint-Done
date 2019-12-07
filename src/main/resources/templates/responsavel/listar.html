@@ -19,8 +19,9 @@
 									<th>ID</th>
 									<th>Nome</th>
 									<th>Apelido</th>
+									<th>E-mail</th>
 									<th>CPF</th>
-									<th>Descrição</th>
+									<th>Senha</th>
 									<th>Ações</th>
 								</tr>
 							</thead>
@@ -29,12 +30,12 @@
 									<td th:text="${responsavel.id}"></td>
 									<td th:text="${responsavel.nome}"></td>
 									<td th:text="${responsavel.apelido}"></td>
+									<td th:text="${responsavel.email}"></td>
 									<td th:text="${responsavel.cpf}"></td>
 									<td>
 		                            	<button type="button" class="btn btn-secondary btn-sm" data-container="body"
 		                                    data-toggle="popover" data-placement="top" th:attr="data-content=${#strings.concat(
-			                                    responsavel.descricao, ', ',
-		                                    )}">		                                
+			                                    responsavel.password)}">		                                
 		                                	<i class="fa fa-eye" aria-hidden="true"></i>
 		                            	</button>
 		                        	</td>

@@ -21,7 +21,7 @@
 									<th>Apelido</th>
 									<th>E-mail</th>
 									<th>CPF</th>
-									<th>Descrição</th>
+									<th>Senha</th>
 									<th>Ações</th>
 								</tr>
 							</thead>
@@ -35,7 +35,7 @@
 									<td>
 		                            	<button type="button" class="btn btn-secondary btn-sm" data-container="body"
 		                                    data-toggle="popover" data-placement="top" th:attr="data-content=${#strings.concat(
-			                                    produtor.descricao, ', ',
+			                                    produtor.password, ', ',
 		                                    )}">		                                
 		                                	<i class="fa fa-eye" aria-hidden="true"></i>
 		                            	</button>

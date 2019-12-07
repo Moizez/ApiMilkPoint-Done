@@ -17,10 +17,11 @@
 							<thead>
 								<tr class="text-center">
 									<th>ID</th>
-									<th>Nome</th>
-									<th>Apelido</th>
+									<th>Razão Social</th>
+									<th>Nome Fantasia</th>
+									<th>E-mail</th>
 									<th>CNPJ</th>
-									<th>Descrição</th>
+									<th>Senha</th>
 									<th>Ações</th>
 								</tr>
 							</thead>
@@ -29,11 +30,12 @@
 									<td th:text="${laticinio.id}"></td>
 									<td th:text="${laticinio.nome}"></td>
 									<td th:text="${laticinio.apelido}"></td>
+									<td th:text="${laticinio.email}"></td>
 									<td th:text="${laticinio.cnpj}"></td>
 									<td>
 		                            	<button type="button" class="btn btn-secondary btn-sm" data-container="body"
 		                                    data-toggle="popover" data-placement="top" th:attr="data-content=${#strings.concat(
-			                                    laticinio.descricao, ', ',
+			                                    laticinio.password, ', ',
 		                                    )}">		                                
 		                                	<i class="fa fa-eye" aria-hidden="true"></i>
 		                            	</button>
