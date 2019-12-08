@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.milkpoint.model.Perfil;
 import net.milkpoint.model.Responsavel;
 import net.milkpoint.service.ResponsavelService;
 
@@ -39,8 +38,7 @@ public class ResponsavelController {
 		if (result.hasErrors()) {
 			return add(responsavel);
 		}
-		
-		responsavel.setPerfil(Perfil.RESPONSAVEL);
+
 		responsavelService.save(responsavel);
 
 		return findAll();

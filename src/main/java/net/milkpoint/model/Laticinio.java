@@ -51,7 +51,7 @@ public class Laticinio implements Serializable {
 	private List<Abastecimento> abastecimentos;
 	
 	@Column
-	private Perfil perfil;
+	private int perfil = 3;
 
 	public Long getId() {
 		return id;
@@ -121,11 +121,11 @@ public class Laticinio implements Serializable {
 		this.password = password;
 	}
 
-	public Perfil getPerfil() {
+	public int getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(Perfil perfil) {
+	public void setPerfil(int perfil) {
 		this.perfil = perfil;
 	}
 

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.milkpoint.model.Laticinio;
-import net.milkpoint.model.Perfil;
 import net.milkpoint.service.LaticinioService;
 
 @Controller
@@ -32,14 +31,12 @@ public class LaticinioController {
 	}
 
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Laticinio laticinio, BindingResult result)
-			throws IOException {
+	public ModelAndView save(@Valid Laticinio laticinio, BindingResult result) throws IOException {
 
 		if (result.hasErrors()) {
 			return add(laticinio);
 		}
-		
-		laticinio.setPerfil(Perfil.LATICINIO);
+
 		laticinioService.save(laticinio);
 
 		return findAll();

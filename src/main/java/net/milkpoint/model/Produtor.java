@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Produtor implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,15 +33,15 @@ public class Produtor implements Serializable {
 
 	@Column(length = 18)
 	private String cpf;
-	
+
 	@Column
 	private String email;
-	
+
 	@Column
-    private String password;
-	
+	private String password;
+
 	@Column
-	private Perfil perfil;
+	private int perfil = 1;
 
 	@OneToMany
 	@JoinTable(name = "abastecimento")
@@ -106,20 +106,20 @@ public class Produtor implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public boolean verificaPassword(String senha) {
-		if(password == senha) {
+		if (password == senha) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public Perfil getPerfil() {
+	public int getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(Perfil perfil) {
+	public void setPerfil(int perfil) {
 		this.perfil = perfil;
 	}
 
@@ -130,7 +130,5 @@ public class Produtor implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 
 }

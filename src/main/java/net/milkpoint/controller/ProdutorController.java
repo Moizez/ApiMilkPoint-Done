@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.milkpoint.model.Perfil;
 import net.milkpoint.model.Produtor;
 import net.milkpoint.service.ProdutorService;
 
@@ -32,13 +31,11 @@ public class ProdutorController {
 	}
 
 	@PostMapping("/save")
-	public ModelAndView save(@Valid Produtor produtor, BindingResult result)
-			throws IOException {
+	public ModelAndView save(@Valid Produtor produtor, BindingResult result) throws IOException {
 
 		if (result.hasErrors()) {
 			return add(produtor);
 		}
-		produtor.setPerfil(Perfil.PRODUTOR);
 		produtorService.save(produtor);
 
 		return findAll();

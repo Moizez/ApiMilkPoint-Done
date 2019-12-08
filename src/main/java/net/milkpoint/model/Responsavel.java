@@ -28,6 +28,9 @@ public class Responsavel implements Serializable {
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
+	
+	@Column
+	private int perfil = 2;
 
 	@Column
 	private String descricao;
@@ -52,8 +55,8 @@ public class Responsavel implements Serializable {
 	@JoinTable(name = "abastecimento")
 	private List<Abastecimento> abastecimentos;
 	
-	@Column
-	private Perfil perfil;
+	//@Column
+	//private Perfil perfil;
 
 	public Long getId() {
 		return id;
@@ -69,6 +72,14 @@ public class Responsavel implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public int getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(int perfil) {
+		this.perfil = perfil;
 	}
 
 	public String getApelido() {
@@ -121,14 +132,6 @@ public class Responsavel implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
 	}
 
 	public void setTanque(List<Tanque> tanque) {
