@@ -6,42 +6,37 @@ import org.springframework.stereotype.Service;
 import net.milkpoint.model.Laticinio;
 import net.milkpoint.model.Produtor;
 import net.milkpoint.model.Responsavel;
-import net.milkpoint.repository.LaticinioRepository;
-import net.milkpoint.repository.ProdutorRepository;
-import net.milkpoint.repository.ResponsavelRepository;
-
 
 @Service
 public class LoginService {
-	
+
 	@Autowired
 	private ProdutorService prodService;
-	
+
 	@Autowired
 	private LaticinioService latService;
-	
+
 	@Autowired
 	private ResponsavelService responsavelService;
-	
-	
+
 	public Object login(String email, String senha) {
-		
+
 		Produtor produtor = prodService.buscaLogin(email);
 		Laticinio laticinio = latService.buscaLogin(email);
 		Responsavel responsavel = responsavelService.buscaLogin(email);
-		
-		if(produtor != null) {
-			
+
+		if (produtor != null) {
+
 			return produtor;
-			
-		} else if(laticinio != null) {
-			
+
+		} else if (laticinio != null) {
+
 			return laticinio;
-		} else if(responsavel != null) {
-			
+		} else if (responsavel != null) {
+
 			return responsavel;
 		}
-		
+
 		return null;
 	}
 }

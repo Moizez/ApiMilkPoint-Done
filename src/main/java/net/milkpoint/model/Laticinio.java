@@ -7,12 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Laticinio implements Serializable {
@@ -39,19 +40,19 @@ public class Laticinio implements Serializable {
 
 	@Column(length = 18)
 	private String cnpj;
-	
+
 	@Column
 	private String email;
-	
-	@Column
-    private String password;
 
-	@OneToMany
-	@JoinTable(name = "abastecimento")
-	private List<Abastecimento> abastecimentos;
-	
+	@Column
+	private String password;
+
 	@Column
 	private int perfil = 3;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "laticinio")
+	private List<Retirada> retiradas;
 
 	public Long getId() {
 		return id;
@@ -101,10 +102,6 @@ public class Laticinio implements Serializable {
 		this.apelido = apelido;
 	}
 
-	public List<Abastecimento> getAbastecimentos() {
-		return abastecimentos;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -127,10 +124,6 @@ public class Laticinio implements Serializable {
 
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
-	}
-
-	public void setAbastecimentos(List<Abastecimento> abastecimentos) {
-		this.abastecimentos = abastecimentos;
 	}
 
 	public static long getSerialversionuid() {

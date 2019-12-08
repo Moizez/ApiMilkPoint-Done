@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
@@ -50,13 +49,6 @@ public class Responsavel implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "responsavel")
 	private List<Tanque> tanque;
-
-	@OneToMany
-	@JoinTable(name = "abastecimento")
-	private List<Abastecimento> abastecimentos;
-	
-	//@Column
-	//private Perfil perfil;
 
 	public Long getId() {
 		return id;
@@ -104,14 +96,6 @@ public class Responsavel implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public List<Abastecimento> getAbastecimentos() {
-		return abastecimentos;
-	}
-
-	public void setAbastecimentos(List<Abastecimento> abastecimentos) {
-		this.abastecimentos = abastecimentos;
 	}
 
 	public List<Tanque> getTanque() {

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.milkpoint.model.Produtor;
 import net.milkpoint.model.Responsavel;
 import net.milkpoint.repository.ResponsavelRepository;
 

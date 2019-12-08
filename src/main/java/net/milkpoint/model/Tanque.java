@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
@@ -16,36 +15,37 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Tanque implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "Nome é uma informação obrigatória.")
 	private String nome;
-	
+
 	@Column
 	private String descricao;
-	
+
 	@Column
 	private String localizacao;
-	
+
 	@Column
-	private Long qtdAtual;
-	
+	private float qtdAtual;
+
 	@Column
-	private Long qtdRestante;
-	
+	private float qtdRestante;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataCriacao;
-	
+
 	@Column
 	private Long capacidade;
 
@@ -54,10 +54,14 @@ public class Tanque implements Serializable {
 
 	@Column
 	private Status status = Status.INATIVO;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "tanque")
+	private List<Retirada> retiradas;
 	
-	@OneToMany
-	@JoinTable(name="abastecimento")
-	private List<Abastecimento> abastecimentos;
+	@JsonIgnore
+	@OneToMany(mappedBy = "tanque")
+	private List<Deposito> depositos;
 	
 	public Long getId() {
 		return id;
@@ -66,7 +70,7 @@ public class Tanque implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -74,7 +78,7 @@ public class Tanque implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -98,7 +102,7 @@ public class Tanque implements Serializable {
 	public void setResponsavel(Responsavel responsavel) {
 		this.responsavel = responsavel;
 	}
-	
+
 	public Long getCapacidade() {
 		return capacidade;
 	}
@@ -106,20 +110,20 @@ public class Tanque implements Serializable {
 	public void setCapacidade(Long capacidade) {
 		this.capacidade = capacidade;
 	}
-	
-	public Long getQtdAtual() {
+
+	public float getQtdAtual() {
 		return qtdAtual;
 	}
 
-	public void setQtdAtual(Long qtdAtual) {
-		this.qtdAtual = qtdAtual;
+	public void setQtdAtual(float f) {
+		this.qtdAtual = f;
 	}
-	
-	public Long getQtdRestante() {
+
+	public float getQtdRestante() {
 		return qtdRestante;
 	}
 
-	public void setQtdRestante(Long qtdRestante) {
+	public void setQtdRestante(float qtdRestante) {
 		this.qtdRestante = qtdRestante;
 	}
 
@@ -131,16 +135,16 @@ public class Tanque implements Serializable {
 		this.status = status;
 	}
 
-	public List<Abastecimento> getAbastecimentos() {
-		return abastecimentos;
-	}
-
-	public void setAbastecimentos(List<Abastecimento> abastecimentos) {
-		this.abastecimentos = abastecimentos;
-	}
-	
 	public String getLocalizacao() {
 		return localizacao;
+	}
+
+	public List<Deposito> getDepositos() {
+		return depositos;
+	}
+
+	public void setDepositos(List<Deposito> depositos) {
+		this.depositos = depositos;
 	}
 
 	public void setLocalizacao(String localizacao) {
@@ -150,6 +154,5 @@ public class Tanque implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
 }

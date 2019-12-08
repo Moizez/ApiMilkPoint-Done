@@ -8,9 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Produtor implements Serializable {
@@ -43,9 +44,9 @@ public class Produtor implements Serializable {
 	@Column
 	private int perfil = 1;
 
-	@OneToMany
-	@JoinTable(name = "abastecimento")
-	private List<Abastecimento> abastecimentos;
+	@JsonIgnore
+	@OneToMany(mappedBy = "produtor")
+	private List<Deposito> depositos;
 
 	public Long getId() {
 		return id;
@@ -69,14 +70,6 @@ public class Produtor implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public List<Abastecimento> getAbastecimentos() {
-		return abastecimentos;
-	}
-
-	public void setAbastecimentos(List<Abastecimento> abastecimentos) {
-		this.abastecimentos = abastecimentos;
 	}
 
 	public String getDescricao() {
@@ -121,6 +114,14 @@ public class Produtor implements Serializable {
 
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
+	}
+
+	public List<Deposito> getDepositos() {
+		return depositos;
+	}
+
+	public void setDepositos(List<Deposito> depositos) {
+		this.depositos = depositos;
 	}
 
 	public void setApelido(String apelido) {
