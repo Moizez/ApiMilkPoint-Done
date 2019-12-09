@@ -29,4 +29,8 @@ public class DepositoService {
 	public void delete(Long id) {
         repository.deleteById(id);
     }
+	
+	public List<Deposito> buscaPendentes() {	
+		return repository.buscaPendentes();
+	}
 }

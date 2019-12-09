@@ -29,4 +29,8 @@ public class RetiradaService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public List<Retirada> buscaPendentes() {
+		return repository.buscaPendentes();
+	}
 }

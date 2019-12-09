@@ -67,6 +67,9 @@ public class RetiradaResource {
 				tanque.setQtdAtual(tanque.getQtdAtual() - retirada.getQuantidade());
 				tanque.setQtdRestante(tanque.getQtdRestante() + retirada.getQuantidade());
 			}
+			else {
+				retirada.setExcluido(true);
+			}
 			service.save(retirada);
 			return ResponseEntity.ok(retirada);
 		}
@@ -77,6 +80,11 @@ public class RetiradaResource {
 	@GetMapping("/retirada/listatodos")
 	public List<Retirada> listAll() {
 		return service.findAll();
+	}
+	
+	@GetMapping("/retirada/listapendentes")
+	public List<Retirada> buscaPendentes() {
+		return service.buscaPendentes();
 	}
 	
 }

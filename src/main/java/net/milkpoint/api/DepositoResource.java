@@ -66,6 +66,8 @@ public class DepositoResource {
 				Tanque tanque = deposito.getTanque();
 				tanque.setQtdAtual(tanque.getQtdAtual() + deposito.getQuantidade());
 				tanque.setQtdRestante(tanque.getQtdRestante() - deposito.getQuantidade());
+			} else {
+				deposito.setExcluido(true);
 			}
 			service.save(deposito);
 			return ResponseEntity.ok(deposito);
@@ -81,6 +83,6 @@ public class DepositoResource {
 	
 	@GetMapping("/deposito/listapendentes")
 	public List<Deposito> listaPendentes() {
-		return service.findAll();
+		return service.buscaPendentes();
 	}
 }
