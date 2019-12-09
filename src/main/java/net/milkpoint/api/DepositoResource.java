@@ -78,4 +78,9 @@ public class DepositoResource {
 	public List<Deposito> listaTodos() {
 		return service.findAll();
 	}
+	
+	@GetMapping("/deposito/listapendentes")
+	public List<Deposito> listaPendentes() {
+		return service.findAll();
+	}
 }
