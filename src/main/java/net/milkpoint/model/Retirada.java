@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Entity
 public class Retirada implements Serializable {
 
@@ -38,7 +37,7 @@ public class Retirada implements Serializable {
 
 	@Column
 	private boolean confirmacao = false;
-	
+
 	@Column
 	private boolean excluido = false;
 
@@ -80,6 +79,14 @@ public class Retirada implements Serializable {
 
 	public void setExcluido(boolean excluido) {
 		this.excluido = excluido;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public static long getSerialversionuid() {

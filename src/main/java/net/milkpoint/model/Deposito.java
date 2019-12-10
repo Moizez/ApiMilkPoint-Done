@@ -80,6 +80,14 @@ public class Deposito implements Serializable {
 	public void setExcluido(boolean excluido) {
 		this.excluido = excluido;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
